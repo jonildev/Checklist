@@ -4,14 +4,10 @@
 <title>Checklist</title>
 <style>
 #checklist {
-  display: grid;
-  grid-template-columns: auto 1fr; 
-  align-items: center;
+  width: fit-content; /* Allow content to determine width */
 }
 
 .item {
-  display: flex;
-  align-items: center;
   margin-bottom: 5px;
 }
 
@@ -115,21 +111,38 @@ const checklistData = [
 
 const checklistDiv = document.getElementById('checklist');
 
-checklistData.forEach(item => {
+function createChecklistItem(itemText) {
   const div = document.createElement('div');
   div.classList.add('item');
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('checkbox');
+  checkbox.addEventListener('change', () => {
+    div.remove();
+    updateChecklistPositions();
+  });
 
   const label = document.createElement('label');
-  label.textContent = item;
+  label.textContent = itemText;
 
   div.appendChild(checkbox);
   div.appendChild(label);
-  checklistDiv.appendChild(div);
+  return div;
+}
+
+function updateChecklistPositions() {
+  const items = checklistDiv.querySelectorAll('.item');
+  items.forEach((item, index) => {
+    item.style.top = `${index * 20}px`; // Adjust spacing as needed
+  });
+}
+
+checklistData.forEach(item => {
+  checklistDiv.appendChild(createChecklistItem(item));
 });
+
+updateChecklistPositions(); // Initial positioning
 </script>
 
 </body>
