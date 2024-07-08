@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Powder Skilling Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Rubik', sans-serif; 
+}
+
+#checklist {
+  width: fit-content; 
+}
+
+.item {
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  margin-right: 10px; 
+}
+</style>
+</head>
+<body>
+<div id="checklist"></div>
+
+<script>
+const checklistData = [
+  "Mole > 1-3",
+  "Mole > 4-6",
+  "Powder Buff > 2",
+  "Mole > 7-10",
+  "Powder Buff > 3",
+  "Mole > 11-14",
+  "Powder Buff > 4",
+  "Mole > 15-19",
+  "Powder Buff > 5",
+  "Mole > 20-23",
+  "Powder Buff > 6",
+  "Mole > 24",
+  "Mole > 25-27",
+  "Powder Buff > 7",
+  "Mole > 28-29",
+  "Mole > 30-32",
+  "Powder Buff > 8",
+  "Mole > 33-35",
+  "Mole > 36",
+  "Powder Buff > 9",
+  "Mole > 37-40",
+  "Powder Buff > 10",
+  "Mole > 41",
+  "Mole > 42-45",
+  "Powder Buff > 11",
+  "Mole > 46-47",
+  "Mole > 48-49",
+  "Powder Buff > 12",
+  "Mole > 50-54",
+  "Powder Buff > 13",
+  "Mole > 55-58",
+  "Powder Buff > 14",
+  "Mole > 59-61",
+  "Mole > 62-63",
+  "Powder Buff > 15",
+  "Mole > 64-68",
+  "Powder Buff > 16",
+  "Mole > 69-72",
+  "Powder Buff > 17",
+  "Mole > 73-76",
+  "Mole > 77",
+  "Powder Buff > 18",
+  "Mole > 78-81",
+  "Powder Buff > 19",
+  "Mole > 82-83",
+  "Mole > 84-86",
+  "Powder Buff > 20",
+  "Mole > 87-91",
+  "Powder Buff > 21",
+  "Mole > 92-96",
+  "Powder Buff > 22",
+  "Mole > 97-100",
+  "Powder Buff > 23",
+  "Mole > 101-105",
+  "Powder Buff > 24",
+  "Mole > 106-108",
+  "Mole > 109-110",
+  "Powder Buff > 25",
+  "Mole > 111-115",
+  "Powder Buff > 26",
+  "Mole > 116-117",
+  "Mole > 118-119",
+  "Powder Buff > 27",
+  "Mole > 120-124",
+  "Powder Buff > 28",
+  "Mole > 125-129",
+  "Powder Buff > 29",
+  "Mole > 130-134",
+  "Powder Buff > 30",
+  "Mole > 135-139",
+  "Powder Buff > 31",
+  "Mole > 140-144",
+  "Powder Buff > 32",
+  "Mole > 145-149",
+  "Powder Buff > 33",
+  "Mole > 150-154",
+  "Powder Buff > 34",
+  "Mole > 155-159",
+  "Powder Buff > 35",
+  "Mole > 160-164",
+  "Powder Buff > 36",
+  "Mole > 165-169",
+  "Powder Buff > 37",
+  "Mole > 170-171",
+  "Powder Buff > 38-50",
+  "Mole > 172-190"
+];
+
+const checklistDiv = document.getElementById('checklist');
+
+function createChecklistItem(itemText) {
+  const div = document.createElement('div');
+  div.classList.add('item');
+
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('checkbox');
+  checkbox.addEventListener('change', () => {
+    div.remove();
+    updateChecklistPositions();
+  });
+
+  const label = document.createElement('label');
+  label.textContent = itemText;
+
+  div.appendChild(checkbox);
+  div.appendChild(label);
+  return div;
+}
+
+function updateChecklistPositions() {
+  const items = checklistDiv.querySelectorAll('.item');
+  items.forEach((item, index) => {
+    item.style.top = `${index * 20}px`; // Adjust spacing as needed
+  });
+}
+
+checklistData.forEach(item => {
+  checklistDiv.appendChild(createChecklistItem(item));
+});
+
+updateChecklistPositions(); // Initial positioning
+</script>
+
+</body>
+</html>
